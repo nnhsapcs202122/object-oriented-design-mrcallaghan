@@ -1,25 +1,28 @@
 import java.util.Scanner;
-/**
- * A FillInQuestion is constructed with a string that contains the answer surrounded by '_'. For example,
- *   "The inventor of Java is _James Gosling_." The quesiton should be displayed as: "The inventor 
- *    of Java is __________."
- *
- * @author mrcallaghan
- * @version 26jan2022
- */
 
+/**
+ * A FillInQuestion is constructed with a string that contains the answer surrounded by
+ *     '_'. For example, "The inventor of Java is _James Gosling_." The question should
+ *     be displayed as: "The inventor of Java is _____."
+ *
+ * @author gcschmit
+ * @version 15 March 2021
+ */
 /*
- * The FillInQuestion extends (i.e., subclass of, is derived from) the Question class.
+ * The FillInQuestion class extends (i.e., is a subclass of, is derived from) the
+ *     Question class.
  */
 public class FillInQuestion extends Question
 {
     /*
-     * DO NOT declare instance variable to text and answer!  The text and answer instance variables 
-     *   are inherited from the Question class.
+     * DO NOT declare instance variables to text and answer! The text and answer instance
+     *     variables are inherited from the Question class!
      */
     
     /**
      * Constructs a FillInQuestion object with the specified text that contains the answer.
+     * 
+     * @param question the specified question text with embedded answer
      */
     public FillInQuestion(String question)
     {
@@ -37,43 +40,47 @@ public class FillInQuestion extends Question
     /**
      * This method overrides the setText method in the Question class.
      * 
-     * Sets the text and the answer.
+     * Sets the question text and the answer.
      * 
-     * @param questionText the text of the question, including the answer.
+     * @param questionText the text of the question including the answer
+     */
+    
+    /*
+     * Use the @Override annotation when overriding a method to help the compiler verify
+     *     that you are in face overriding and not overloading by mistake.
      */
     @Override
     public void setText(String questionText)
     {
         Scanner parser = new Scanner(questionText);
         parser.useDelimiter("_");
-        String question = parser.next();  // "The inventor of Java is "
+        String question = parser.next();        // "The inventor of Java is "
         String answer = parser.next();          // "James Gosling"
         question += "________" + parser.next(); // "________."
         
-        
         /*
          * The inherited instance variables are private; they cannot be directly accessed.
-         *   We must use the mutator and accessor methods.
+         *     We must use the mutator and accessor methods.
          */
         //this.text = question;
         //this.answer = answer;
         
         /*
-         * Use the "super" reserved word to call the setText method as defined in the superclass 
-         *   (e.g. Question)
+         * Use the "super" reserved word to call the setText method as defined in
+         *     the superclass (e.g., Question).
          */
         super.setText(question);
         
         /*
-         * We should use the "this" reserved word to call the setAnswer method.  If
-         *   the subclass doesn't overrride this method, the superclass's method will be called.
-         *   
-         *   We don't want to use "super" in this case because if we later override setAnswer, 
-         *   the overridden method would not be called.
+         * We should use the "this" reserved word to call the setAnswer method. If the
+         *     subclass doesn't override this method, the superclass's method will be
+         *     called.
+         *     
+         *  We don't want to use "super" in this case because if we later override
+         *     setAnswer, the overriden method would not be called.
          */
         this.setAnswer(answer);
-    
-    
     }
-
 }
+
+

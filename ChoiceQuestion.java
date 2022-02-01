@@ -14,6 +14,7 @@ public class ChoiceQuestion extends Question
      */
     public ChoiceQuestion( String question ) 
     {
+        super(question);
         this.choices = new ArrayList<String>();
     }
 
@@ -48,4 +49,3 @@ public class ChoiceQuestion extends Question
         return str;
     }
 }
-
